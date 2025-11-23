@@ -1,0 +1,101 @@
+.buildingMarkerIcon {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.buildingMarkerIcon > :global(.st-marker-inner) {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--marker-stroke-color, var(--color-danger, #ef4444)); /* デフォルトは赤系 */
+  background-color: var(--marker-fill-color, var(--color-danger-soft, #f87171)); /* デフォルトは薄い赤系 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buildingMarkerIcon.emphasized > :global(.st-marker-inner) {
+  border-width: 3px;
+}
+
+.buildingMarkerIcon.highlighted {
+  animation: st-glow 1.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25), 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.buildingMarkerIcon.highlighted > :global(.st-marker-inner) {
+  transform: scale(1.08);
+}
+
+@keyframes st-glow {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.0), 0 1px 2px rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.35), 0 2px 4px rgba(0,0,0,0.25); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.0), 0 1px 2px rgba(0,0,0,0.2); }
+}
+
+.buildingMarkerIcon.highlighted::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  animation: st-ring 1.2s ease-out 0s 2;
+}
+
+@keyframes st-ring {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; border-width: 4px; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; border-width: 0px; }
+}
+
+.customTooltip {
+  background-color: var(--tooltip-bg-color, rgba(0, 0, 0, 0.7));
+  color: var(--tooltip-text-color, white);
+  border: none;
+  border-radius: var(--round-sm, 4px);
+  padding: 2px 5px;
+  font-size: var(--font-size-xs, 10px);
+  box-shadow: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1400;
+}
+
+.customTooltip::before {
+  display: none;
+}
+
+.circleMarkerBase {
+  transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, fill-opacity 0.3s ease;
+  transform-origin: center;
+  fill-opacity: 0.9;
+  stroke-opacity: 1;
+  outline: none !important;
+}
+
+.circleMarkerBase:focus,
+.circleMarkerBase:focus-visible {
+  outline: none !important;
+}
+
+.circleMarkerNormal {
+  transform-origin: center;
+}
+
+.circleMarkerHighlight {
+  filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.6));
+}
+
+.circleMarkerFiltered {
+  transform-origin: center;
+}
+
+.circleMarkerMuted {
+  transform-origin: center;
+}
+
+.circleMarkerEmphasized {
+  stroke-width: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}

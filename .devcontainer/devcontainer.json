@@ -1,0 +1,47 @@
+{
+    "name": "ScienceTokyoMapDemoContainer",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "runArgs": ["-p", "3001:3001"],
+    "init": true,
+    "remoteUser": "node",
+    "features": {},
+    "mounts": [
+        "type=volume,source=stm_node_modules,target=/workspace/frontend/node_modules"
+    ],
+        "postCreateCommand": "cd frontend && mkdir -p node_modules && sudo chown -R node:node node_modules && npm install",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                    "[typescript]": { "editor.formatOnSave": true },
+                    "[typescriptreact]": { "editor.formatOnSave": true },
+                "workbench.colorCustomizations": {
+                    "editorIndentGuide.background1": "#b22222",
+                    "editorIndentGuide.background2": "#ff4500",
+                    "editorIndentGuide.background3": "#ffd700",
+                    "editorIndentGuide.background4": "#228b22",
+                    "editorIndentGuide.background5": "#000080",
+                    "editorIndentGuide.background6": "#8b008b",
+                    "editorIndentGuide.activeBackground1": "#fff",
+                    "editorIndentGuide.activeBackground2": "#fff",
+                    "editorIndentGuide.activeBackground3": "#fff",
+                    "editorIndentGuide.activeBackground4": "#fff",
+                    "editorIndentGuide.activeBackground5": "#fff",
+                    "editorIndentGuide.activeBackground6": "#fff"
+                }
+            },
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "streetsidesoftware.code-spell-checker",
+                "formulahendry.auto-rename-tag",
+                "ionutvmi.path-autocomplete",
+                "eamodio.gitlens",
+                "VisualStudioExptTeam.vscodeintellicode"
+            ]
+        }
+    }
+}

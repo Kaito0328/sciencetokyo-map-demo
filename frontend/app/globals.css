@@ -1,0 +1,21 @@
+html,body { margin:0; padding:0; }
+html, body { width: 100%; height: 100%; }
+html, body {
+	overscroll-behavior-y: none;
+	overscroll-behavior-x: contain;
+}
+body {
+	overflow: hidden;
+}
+#__next, body > div#__next { width: 100%; height: 100%; }
+.leaflet-container { background: transparent !important; }
+.leaflet-top, .leaflet-bottom { z-index: 100 !important; }
+
+.leaflet-interactive:focus,
+.leaflet-interactive:focus-visible {
+  outline: none !important;
+}
+
+main {
+	background-color: #ffff;
+}
